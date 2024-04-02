@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F2A696D1-7F3B-4012-A42B-AE2018450D3F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "service", "service", "{7D74EB46-01A8-48EC-9B16-6CE39F71E629}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PredictWeatherAPI", "src\service\PredictWeatherAPI\PredictWeatherAPI.csproj", "{C8740611-6E26-4C1D-8C4E-914FAF5B39D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8740611-6E26-4C1D-8C4E-914FAF5B39D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8740611-6E26-4C1D-8C4E-914FAF5B39D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8740611-6E26-4C1D-8C4E-914FAF5B39D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8740611-6E26-4C1D-8C4E-914FAF5B39D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7D74EB46-01A8-48EC-9B16-6CE39F71E629} = {F2A696D1-7F3B-4012-A42B-AE2018450D3F}
+		{C8740611-6E26-4C1D-8C4E-914FAF5B39D1} = {7D74EB46-01A8-48EC-9B16-6CE39F71E629}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {33E71B95-8548-4653-A760-55EF73835DAB}
+	EndGlobalSection
+EndGlobal
