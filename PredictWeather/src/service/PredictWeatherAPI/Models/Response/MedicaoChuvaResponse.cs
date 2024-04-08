@@ -6,14 +6,8 @@ namespace PredictWeatherAPI.Models.Response
 {
     public class MedicaoChuvaResponse
     {
-        public int MedicaoId { get; set; }
-
-        public int DispositivoId { get; set; }
-
-        public TbDispositivo Dispositivo { get; set; }
-
+        public string Dispositivo { get; set; }
         public DateTime DataHora { get; set; }
-
         public decimal VolumetriaChuva { get; set; }
     }
 }

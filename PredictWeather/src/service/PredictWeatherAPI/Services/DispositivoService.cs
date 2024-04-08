@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using PredictWeatherAPI.Data.Interfaces;
 using PredictWeatherAPI.Data.Table;
+using PredictWeatherAPI.Exception;
 using PredictWeatherAPI.Models.Request;
 using PredictWeatherAPI.Models.Response;
 
@@ -30,11 +31,19 @@ namespace PredictWeatherAPI.Services
         public async Task<DispositivoResponse> ObterDispositivoAsync(int id)
         {
             var dispositivo =  await _dispositivoRepository.ObterDispositivoAsync(id);
+
+            if (dispositivo == null)
+                throw new NotFoundException("Dispositivo não encontrado!");
+
             return _mapper.Map<DispositivoResponse>(dispositivo);
         }
         public async Task DeletarDispositivoAsync(int id)
         {
             var dispositivo = await _dispositivoRepository.ObterDispositivoAsync(id);
+
+            if (dispositivo == null)
+                throw new BadHttpRequestException("Id do dispositivo inexistente ou inválido!");
+
             await _dispositivoRepository.DeletarDispositivoAsync(dispositivo);
         }
         public async Task<IEnumerable<DispositivoResponse>> ListarDispositivoAsync()

@@ -15,16 +15,35 @@ namespace PredictWeatherAPI.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            // modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            modelBuilder.Entity<TbUsuario>()
-                .ToTable("TbUsuario");
+            modelBuilder.Entity<TbUsuario>(entity =>
+            {
+                entity.ToTable("TbUsuario");
 
-            modelBuilder.Entity<TbDispositivo>()
-                .ToTable("TbDispositivo");
+                entity.HasKey(x => x.Id);
+            });
 
-            modelBuilder.Entity<TbMedicaoChuva>()
-                .ToTable("TbMedicaoChuva");
+            modelBuilder.Entity<TbDispositivo>(entity =>
+            {
+                entity.ToTable("TbDispositivo");
+
+                entity.HasKey(x => x.DispositivoId);
+            });
+
+            modelBuilder.Entity<TbMedicaoChuva>(entity =>
+            {
+                entity.ToTable("TbMedicaoChuva");
+
+                entity.HasKey(x => x.MedicaoId);
+
+                entity.Property(x => x.DataHora).HasColumnName("data_hora");
+
+                entity.Property(x => x.VolumetriaChuva).HasColumnName("volumetria_chuva");
+
+                entity.HasOne(x => x.Dispositivo)
+                .WithMany(x => x.MedidorChuva)
+                .HasForeignKey(x => x.DispositivoId);
+            });
         }
     }
 }

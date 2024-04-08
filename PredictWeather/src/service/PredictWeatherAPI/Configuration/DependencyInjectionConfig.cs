@@ -12,8 +12,8 @@ namespace PredictWeatherAPI.Configuration
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<IDispositivoRepository, DispositivoRepository>();
             services.AddScoped<IDispositivoService, DispositivoService>();
-            services.AddScoped<IMedidorDeChuvaRepository, MedidorDeChuvaRepository>();
-            services.AddScoped<IMedidorDeChuvaService, MedidorDeChuvaService>();
+            services.AddScoped<IMedidorChuvaRepository, MedidorChuvaRepository>();
+            services.AddScoped<IMedidorChuvaService, MedidorChuvaService>();
         }
     }
 }

@@ -1,16 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using PredictWeatherAPI.Data;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PredictWeatherAPI.Data.Interfaces;
-using PredictWeatherAPI.Data.Table;
 using PredictWeatherAPI.Models.Request;
-using PredictWeatherAPI.Models.Response;
-using System.Reflection.Metadata.Ecma335;
 
 namespace PredictWeatherAPI.Controllers
 {
-    [Route("[controller]")]
     [ApiController]
+    [Authorize]
+    [Route("dispositivos")]
     public class DispositivoController : ControllerBase
     {
         private readonly IDispositivoService _dispositivoService;
@@ -20,35 +17,29 @@ namespace PredictWeatherAPI.Controllers
             _dispositivoService = dispositivoService;
         }
 
-        [HttpPost("CriarDispositivo")]
+        [HttpPost]
         public async Task<IActionResult> CriarDispositivoAsync(DispositivoRequest dispositivoRrequest)
         {
             await _dispositivoService.CriarDispositivoAsync(dispositivoRrequest);
-            return StatusCode(StatusCodes.Status201Created);
 
-            //return CreatedAtAction(nameof(GetDispositivo), new { id = dispositivo.DispositivoId }, dispositivo);
+            return StatusCode(StatusCodes.Status201Created);
         }
 
-        [HttpGet("ListarDispositivo")]
+        [HttpGet]
         public async Task<IActionResult> ListarDispositivoAsync()
         {
             return Ok(await _dispositivoService.ListarDispositivoAsync());
         }
 
-        [HttpGet("{id}/ObterDispositivo")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> ObterDispositivoAsync(int id)
         {
             var dispositivo = await _dispositivoService.ObterDispositivoAsync(id);
 
-            if (dispositivo == null)
-            {
-                return NotFound();
-            }
-
             return Ok(dispositivo);
         }
 
-        [HttpPut("atualizar")]
+        [HttpPut]
         public async Task<IActionResult> AtualizarDispositivoAsync(AtualizarDispositivoRequest request)
         {
             await _dispositivoService.AtualizarDispositivoAsync(request);
@@ -58,7 +49,7 @@ namespace PredictWeatherAPI.Controllers
 
         
 
-        [HttpDelete("{id}/deletar")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDispositivo(int id)
         {
             await _dispositivoService.DeletarDispositivoAsync(id);

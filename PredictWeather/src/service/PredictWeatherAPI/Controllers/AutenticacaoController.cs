@@ -20,9 +20,7 @@ namespace PredictWeatherAPI.AutenticacaoController
         public async Task<IActionResult> Login([FromBody] Login login)
         {
             if (login == null)
-            {
                 return Unauthorized();
-            }
 
             var usuario = await _usuarioService.AutenticarAsync(login);
 

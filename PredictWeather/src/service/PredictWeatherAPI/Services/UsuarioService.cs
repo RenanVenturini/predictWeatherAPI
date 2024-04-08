@@ -3,7 +3,6 @@ using Microsoft.IdentityModel.Tokens;
 using PredictWeatherAPI.Data.Interfaces;
 using PredictWeatherAPI.Data.Table;
 using PredictWeatherAPI.Models.Request;
-using PredictWeatherAPI.Models.Response;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -29,11 +28,11 @@ namespace PredictWeatherAPI.Services
 
         public async Task<Token> AutenticarAsync(Login login)
         {
-            var usuario = await _repository.ObterUsuarioAsync(login.Username, login.Senha);
+            var usuario = await _repository.ObterUsuarioAsync(login.Usuario, login.Senha);
 
             if (usuario == null)
             {
-                throw new Exception("Usuarios ou Senha Invalido");
+                throw new UnauthorizedAccessException("Usuario ou Senha Invalido!");
             }
 
             return GerarTokenAsync(usuario);

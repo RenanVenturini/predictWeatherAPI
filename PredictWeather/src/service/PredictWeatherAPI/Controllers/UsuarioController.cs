@@ -5,7 +5,7 @@ using PredictWeatherAPI.Models.Request;
 namespace PredictWeatherAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("usuarios")]
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioService _usuarioService;
@@ -15,7 +15,7 @@ namespace PredictWeatherAPI.Controllers
             _usuarioService = usuarioService;
         }
 
-        [HttpPost("adicionar")]
+        [HttpPost]
         public async Task<IActionResult> AdicionarUsuarioAsync(UsuarioRequest usuarioRequest)
         {
             await _usuarioService.AdicionarUsuarioAsync(usuarioRequest);

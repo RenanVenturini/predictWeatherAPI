@@ -14,7 +14,17 @@ namespace PredictWeatherAPI.Data.Mappings_Profiles
             CreateMap<AtualizarDispositivoRequest, TbDispositivo>();
             CreateMap<DispositivoRequest, TbDispositivo>();
             CreateMap<TbDispositivo, DispositivoResponse>();
-            CreateMap<TbMedicaoChuva, MedicaoChuvaResponse>();
+            CreateMap<TbMedicaoChuva, MedicaoChuvaResponse>()
+                .ForPath(
+                    src => src.Dispositivo,
+                    opt => opt.MapFrom(dest => dest.Dispositivo.Nome)
+                );
+
+            CreateMap<MedicaoChuvaRequest, TbMedicaoChuva>()
+                .ForMember(
+                    src => src.DataHora,
+                    opt => opt.MapFrom(dest => DateTime.Now)
+                );
         }
     }
 }
