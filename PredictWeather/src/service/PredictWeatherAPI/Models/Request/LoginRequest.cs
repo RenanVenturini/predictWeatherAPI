@@ -2,9 +2,9 @@
 
 namespace PredictWeatherAPI.Models.Request
 {
-    public class UsuarioRequest
+    public class LoginRequest
     {
-        public string Nome { get; set; }
+        public string Usuario { get; set; }
         public string Senha { get; set; }
     }
 }

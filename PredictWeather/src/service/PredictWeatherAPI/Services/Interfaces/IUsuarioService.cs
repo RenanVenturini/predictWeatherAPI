@@ -2,12 +2,12 @@
 using PredictWeatherAPI.Models.Request;
 using PredictWeatherAPI.Models.Response;
 
-namespace PredictWeatherAPI.Data.Interfaces
+namespace PredictWeatherAPI.Services.Interfaces
 {
     public interface IUsuarioService
     {
         Task AdicionarUsuarioAsync(UsuarioRequest usuarioRequest);
-        Task<Token> AutenticarAsync(Login login);
-        Token GerarTokenAsync(TbUsuario usuario);
+        Task<Token> AutenticarAsync(LoginRequest login);
+        Token GerarTokenAsync(Usuario usuario);
     }
 }

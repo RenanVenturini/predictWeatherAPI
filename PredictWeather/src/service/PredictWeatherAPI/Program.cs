@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
@@ -26,12 +27,14 @@ builder.Services.AddAuthentication(options =>
 });
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddEntityFramework(builder.Configuration);
 builder.Services.RegisterAutoMapper();
 builder.Services.RegisterServices();
 builder.Services.AddSwagger();
+builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 
@@ -79,6 +82,7 @@ app.UseExceptionHandler(errorApp =>
 });
 
 app.UseHttpsRedirection();
+app.UseResponseCaching();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

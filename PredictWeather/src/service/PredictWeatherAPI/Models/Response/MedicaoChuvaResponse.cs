@@ -7,7 +7,6 @@ namespace PredictWeatherAPI.Models.Response
     public class MedicaoChuvaResponse
     {
         public string Dispositivo { get; set; }
-        public DateTime DataHora { get; set; }
-        public decimal VolumetriaChuva { get; set; }
+        public string VolumetriaChuva { get; set; }
     }
 }

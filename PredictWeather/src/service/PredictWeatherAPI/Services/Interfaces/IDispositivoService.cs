@@ -1,7 +1,7 @@
 ﻿using PredictWeatherAPI.Models.Request;
 using PredictWeatherAPI.Models.Response;
 
-namespace PredictWeatherAPI.Data.Interfaces
+namespace PredictWeatherAPI.Services.Interfaces
 {
     public interface IDispositivoService
     {

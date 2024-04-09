@@ -1,6 +1,7 @@
 ﻿using PredictWeatherAPI.Data.Interfaces;
 using PredictWeatherAPI.Data.Repository;
 using PredictWeatherAPI.Services;
+using PredictWeatherAPI.Services.Interfaces;
 
 namespace PredictWeatherAPI.Configuration
 {
@@ -12,8 +13,7 @@ namespace PredictWeatherAPI.Configuration
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<IDispositivoRepository, DispositivoRepository>();
             services.AddScoped<IDispositivoService, DispositivoService>();
-            services.AddScoped<IMedidorChuvaRepository, MedidorChuvaRepository>();
-            services.AddScoped<IMedidorChuvaService, MedidorChuvaService>();
+            services.AddScoped<ITelnetService, TelnetService>();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PredictWeatherAPI.Data.Interfaces;
 using PredictWeatherAPI.Models.Request;
+using PredictWeatherAPI.Services.Interfaces;
 
 namespace PredictWeatherAPI.Controllers
 {

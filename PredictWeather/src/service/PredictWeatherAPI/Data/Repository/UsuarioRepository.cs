@@ -13,12 +13,12 @@ namespace PredictWeatherAPI.Data.Repository
             _context = context;
         }
 
-        public async Task AdicionarUsuarioAsync(TbUsuario usuario)
+        public async Task AdicionarUsuarioAsync(Usuario usuario)
         {
             await _context.Usuarios.AddAsync(usuario);
             await _context.SaveChangesAsync();
         }
-        public async Task<TbUsuario> ObterUsuarioAsync(string username, string senha)
+        public async Task<Usuario> ObterUsuarioAsync(string username, string senha)
         {
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Nome == username && u.Senha == senha);
             return usuario;

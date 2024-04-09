@@ -9,22 +9,11 @@ namespace PredictWeatherAPI.Data.Mappings_Profiles
     {
         public PredictWeatherProfile()
         {
-            CreateMap<UsuarioRequest, TbUsuario>();
-            CreateMap<TbUsuario, UsuarioResponse>();
-            CreateMap<AtualizarDispositivoRequest, TbDispositivo>();
-            CreateMap<DispositivoRequest, TbDispositivo>();
-            CreateMap<TbDispositivo, DispositivoResponse>();
-            CreateMap<TbMedicaoChuva, MedicaoChuvaResponse>()
-                .ForPath(
-                    src => src.Dispositivo,
-                    opt => opt.MapFrom(dest => dest.Dispositivo.Nome)
-                );
-
-            CreateMap<MedicaoChuvaRequest, TbMedicaoChuva>()
-                .ForMember(
-                    src => src.DataHora,
-                    opt => opt.MapFrom(dest => DateTime.Now)
-                );
+            CreateMap<UsuarioRequest, Usuario>();
+            CreateMap<Usuario, UsuarioResponse>();
+            CreateMap<AtualizarDispositivoRequest, Dispositivo>();
+            CreateMap<DispositivoRequest, Dispositivo>();
+            CreateMap<Dispositivo, DispositivoResponse>();
         }
     }
 }

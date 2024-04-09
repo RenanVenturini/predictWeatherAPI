@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using PredictWeatherAPI.Data.Interfaces;
 using PredictWeatherAPI.Data.Table;
 using PredictWeatherAPI.Models.Request;
+using PredictWeatherAPI.Services.Interfaces;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -22,11 +23,11 @@ namespace PredictWeatherAPI.Services
 
         public async Task AdicionarUsuarioAsync(UsuarioRequest usuarioRequest)
         {
-            var usuario = _mapper.Map<TbUsuario>(usuarioRequest);
+            var usuario = _mapper.Map<Usuario>(usuarioRequest);
             await _repository.AdicionarUsuarioAsync(usuario);
         }
 
-        public async Task<Token> AutenticarAsync(Login login)
+        public async Task<Token> AutenticarAsync(LoginRequest login)
         {
             var usuario = await _repository.ObterUsuarioAsync(login.Usuario, login.Senha);
 
@@ -38,7 +39,7 @@ namespace PredictWeatherAPI.Services
             return GerarTokenAsync(usuario);
         }
 
-        public Token GerarTokenAsync(TbUsuario usuario)
+        public Token GerarTokenAsync(Usuario usuario)
         {
 
             var claims = new[]

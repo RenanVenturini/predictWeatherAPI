@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PredictWeatherAPI.Data.Interfaces;
 using PredictWeatherAPI.Models.Request;
+using PredictWeatherAPI.Models.Response;
+using PredictWeatherAPI.Services.Interfaces;
 
 namespace PredictWeatherAPI.Controllers
 {
@@ -11,10 +12,12 @@ namespace PredictWeatherAPI.Controllers
     public class DispositivoController : ControllerBase
     {
         private readonly IDispositivoService _dispositivoService;
+        private readonly ITelnetService _telnetService;
 
-        public DispositivoController(IDispositivoService dispositivoService)
+        public DispositivoController(IDispositivoService dispositivoService, ITelnetService telnetService)
         {
             _dispositivoService = dispositivoService;
+            _telnetService = telnetService;
         }
 
         [HttpPost]
@@ -50,10 +53,33 @@ namespace PredictWeatherAPI.Controllers
         
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteDispositivo(int id)
+        public async Task<IActionResult> DeleteDispositivoAsync(int id)
         {
             await _dispositivoService.DeletarDispositivoAsync(id);
             return NoContent();
+        }
+
+        [HttpGet("medicoes")]
+        public async Task<IActionResult> ListarMedicoesAsync()
+        {
+            try
+            {
+                var dispositivos = await _dispositivoService.ListarDispositivoAsync();
+
+                var medicoesChuva = new List<MedicaoChuvaResponse>();
+
+                foreach (var dispositivo in dispositivos)
+                {
+                    var medicao = await _telnetService.EnviarComandoAsync(dispositivo.EnderecoIP, dispositivo.Porta, dispositivo.Comando);
+                    medicoesChuva.Add(new MedicaoChuvaResponse { Dispositivo = dispositivo.Nome, VolumetriaChuva = $"{medicao} mm/h" });
+                }
+
+                return Ok(medicoesChuva);
+            }
+            catch (System.Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { error = ex.Message });
+            }
         }
     }
 }

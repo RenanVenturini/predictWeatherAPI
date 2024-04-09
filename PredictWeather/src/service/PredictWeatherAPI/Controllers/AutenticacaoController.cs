@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PredictWeatherAPI.Data.Interfaces;
-using PredictWeatherAPI.Data.Table;
+using PredictWeatherAPI.Models.Request;
+using PredictWeatherAPI.Services.Interfaces;
 
 namespace PredictWeatherAPI.AutenticacaoController
 {
@@ -17,7 +17,7 @@ namespace PredictWeatherAPI.AutenticacaoController
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login([FromBody] Login login)
+        public async Task<IActionResult> LoginAsync([FromBody] LoginRequest login)
         {
             if (login == null)
                 return Unauthorized();

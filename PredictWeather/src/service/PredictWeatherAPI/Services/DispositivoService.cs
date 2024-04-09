@@ -4,6 +4,7 @@ using PredictWeatherAPI.Data.Table;
 using PredictWeatherAPI.Exception;
 using PredictWeatherAPI.Models.Request;
 using PredictWeatherAPI.Models.Response;
+using PredictWeatherAPI.Services.Interfaces;
 
 namespace PredictWeatherAPI.Services
 {
@@ -20,12 +21,12 @@ namespace PredictWeatherAPI.Services
 
         public async Task CriarDispositivoAsync(DispositivoRequest dispositivoRrequest)
         {
-            var dispositivo = _mapper.Map<TbDispositivo>(dispositivoRrequest);
+            var dispositivo = _mapper.Map<Dispositivo>(dispositivoRrequest);
             await _dispositivoRepository.AtualizarDispositivoAsync(dispositivo);
         }
         public async Task AtualizarDispositivoAsync(AtualizarDispositivoRequest dispositivoRrequest)
         {
-            var dispositivo = _mapper.Map<TbDispositivo>(dispositivoRrequest);
+            var dispositivo = _mapper.Map<Dispositivo>(dispositivoRrequest);
             await _dispositivoRepository.AtualizarDispositivoAsync(dispositivo);
         }
         public async Task<DispositivoResponse> ObterDispositivoAsync(int id)
@@ -50,6 +51,7 @@ namespace PredictWeatherAPI.Services
         {
             var dispositivo = await _dispositivoRepository.ListarDispositivoAsync();
             return _mapper.Map<IEnumerable<DispositivoResponse>>(dispositivo);
+
         }
     }
 }

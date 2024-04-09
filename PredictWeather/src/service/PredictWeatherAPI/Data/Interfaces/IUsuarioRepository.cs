@@ -4,7 +4,7 @@ namespace PredictWeatherAPI.Data.Interfaces
 {
     public interface IUsuarioRepository
     {
-        Task AdicionarUsuarioAsync(TbUsuario usuario);
-        Task<TbUsuario> ObterUsuarioAsync(string username, string senha);
+        Task AdicionarUsuarioAsync(Usuario usuario);
+        Task<Usuario> ObterUsuarioAsync(string username, string senha);
     }
 }
