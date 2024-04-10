@@ -14,7 +14,7 @@ namespace PredictWeatherAPI.Migrations
                 name: "TbDispositivo",
                 columns: table => new
                 {
-                    DispositivoId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Fabricante = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -24,7 +24,7 @@ namespace PredictWeatherAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TbDispositivo", x => x.DispositivoId);
+                    table.PrimaryKey("PK_TbDispositivo", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
