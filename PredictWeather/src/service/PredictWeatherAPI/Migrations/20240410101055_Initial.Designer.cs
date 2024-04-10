@@ -11,7 +11,7 @@ using PredictWeatherAPI.Data;
 namespace PredictWeatherAPI.Migrations
 {
     [DbContext(typeof(PredictWeatherContext))]
-    [Migration("20240409134610_Initial")]
+    [Migration("20240410101055_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
