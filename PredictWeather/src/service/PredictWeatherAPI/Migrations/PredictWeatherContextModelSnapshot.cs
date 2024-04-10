@@ -23,11 +23,11 @@ namespace PredictWeatherAPI.Migrations
 
             modelBuilder.Entity("PredictWeatherAPI.Data.Table.Dispositivo", b =>
                 {
-                    b.Property<int>("DispositivoId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DispositivoId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Comando")
                         .HasColumnType("nvarchar(max)");
@@ -44,7 +44,7 @@ namespace PredictWeatherAPI.Migrations
                     b.Property<int>("Porta")
                         .HasColumnType("int");
 
-                    b.HasKey("DispositivoId");
+                    b.HasKey("Id");
 
                     b.ToTable("TbDispositivo", (string)null);
                 });

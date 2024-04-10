@@ -21,6 +21,7 @@ namespace PredictWeatherAPI.Services
                     {
                         // Envie o comando Telnet
                         await writer.WriteLineAsync(comando);
+                        await writer.FlushAsync();
 
                         // Aguarde a resposta do dispositivo
                         var resposta = await reader.ReadToEndAsync();

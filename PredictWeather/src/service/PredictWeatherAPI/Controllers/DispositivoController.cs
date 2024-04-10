@@ -8,7 +8,7 @@ namespace PredictWeatherAPI.Controllers
 {
     [ApiController]
     [Authorize]
-    [Route("dispositivos")]
+    [Route("device")]
     public class DispositivoController : ControllerBase
     {
         private readonly IDispositivoService _dispositivoService;

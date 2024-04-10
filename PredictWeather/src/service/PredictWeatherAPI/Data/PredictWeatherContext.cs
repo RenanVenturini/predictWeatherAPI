@@ -26,7 +26,7 @@ namespace PredictWeatherAPI.Data
             {
                 entity.ToTable("TbDispositivo");
 
-                entity.HasKey(x => x.DispositivoId);
+                entity.HasKey(x => x.Id);
             });
         }
     }

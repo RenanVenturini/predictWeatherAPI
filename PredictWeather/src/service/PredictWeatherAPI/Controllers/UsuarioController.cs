@@ -5,7 +5,7 @@ using PredictWeatherAPI.Services.Interfaces;
 namespace PredictWeatherAPI.Controllers
 {
     [ApiController]
-    [Route("usuarios")]
+    [Route("[controller]")]
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioService _usuarioService;

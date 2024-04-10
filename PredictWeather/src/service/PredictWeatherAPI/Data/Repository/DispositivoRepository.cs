@@ -26,7 +26,7 @@ namespace PredictWeatherAPI.Data.Repository
             await _context.SaveChangesAsync();
         }
         public async Task<Dispositivo> ObterDispositivoAsync(int id)
-            => await _context.Dispositivos.FirstOrDefaultAsync(d => d.DispositivoId == id);
+            => await _context.Dispositivos.FirstOrDefaultAsync(d => d.Id == id);
 
         public async Task<IEnumerable<Dispositivo>> ListarDispositivoAsync()
             => await _context.Dispositivos
